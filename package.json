@@ -1,0 +1,38 @@
+{
+  "name": "detect-charset",
+  "description": "Detect character set of file",
+  "version": "0.0.0",
+  "homepage": "https://github.com/treyhunner/detect-charset",
+  "bugs": "https://github.com/treyhunner/detect-charset/issues",
+  "license": "MIT",
+  "main": "lib/detect-charset.js",
+  "author": {
+    "name": "Trey Hunner",
+    "email": "trey@treyhunner.com",
+    "url": "http://treyhunner.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/treyhunner/detect-charset"
+  },
+  "keywords":[],
+  "dependencies": {
+    "lodash": "2.4.1",
+    "q": "1.1.2",
+    "debug": "2.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-jshint": "^1.8.4",
+    "gulp-mocha": "^1.1.0",
+    "coveralls": "^2.11.1",
+    "should": "^4.0.4",
+    "jshint-stylish": "^0.4.0",
+    "gulp-load-plugins": "^0.6.0",
+    "gulp-plumber": "^0.6.5"
+  },
+  "scripts": {
+    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "gulp test"
+  }
+}
