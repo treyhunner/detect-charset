@@ -15,4 +15,8 @@ describe('detectCharset', function () {
     assert.equal(detectCharset(getFixture('latin1.txt')), 'latin1');
   });
 
+  it('should return utf-8 for files with unicode', function () {
+    assert.equal(detectCharset(getFixture('utf-8-with-unicode.txt')), 'utf-8');
+  });
+
 });
