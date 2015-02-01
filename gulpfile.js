@@ -1,7 +1,11 @@
 'use strict';
 
+var DEBUG = process.env.NODE_ENV === 'debug';
+var CI = process.env.CI === 'true';
+
 var gulp   = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var mocha = require('gulp-spawn-mocha');
 
 var paths = {
   lint: ['./gulpfile.js', './lib/**/*.js'],
@@ -11,7 +15,7 @@ var paths = {
 
 var plumberConf = {};
 
-if (process.env.CI) {
+if (CI) {
   plumberConf.errorHandler = function(err) {
     throw err;
   };
@@ -26,7 +30,9 @@ gulp.task('lint', function () {
 gulp.task('unitTest', function () {
   gulp.src(paths.tests, {cwd: __dirname})
     .pipe(plugins.plumber(plumberConf))
-    .pipe(plugins.mocha({ reporter: 'list' }));
+    .pipe(mocha({
+      istanbul: !DEBUG,
+    }));
 });
 
 gulp.task('watch', ['test'], function () {
