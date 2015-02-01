@@ -1,7 +1,7 @@
 {
   "name": "detect-charset",
   "description": "Detect character set of file",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/treyhunner/detect-charset",
   "bugs": "https://github.com/treyhunner/detect-charset/issues",
   "license": "MIT",
