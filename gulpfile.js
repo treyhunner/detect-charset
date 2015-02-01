@@ -35,6 +35,7 @@ gulp.task('unitTest', function () {
     .pipe(plugins.plumber(plumberConf))
     .pipe(plugins.mocha({
       istanbul: !DEBUG,
+      reporter: 'spec',
     }));
 });
 
