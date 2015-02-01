@@ -4,8 +4,11 @@ var DEBUG = process.env.NODE_ENV === 'debug';
 var CI = process.env.CI === 'true';
 
 var gulp   = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var mocha = require('gulp-spawn-mocha');
+var plugins = require('gulp-load-plugins')({
+  rename: {
+    'gulp-spawn-mocha': 'mocha',
+  },
+});
 
 var paths = {
   lint: ['./gulpfile.js', './lib/**/*.js'],
@@ -30,7 +33,7 @@ gulp.task('lint', function () {
 gulp.task('unitTest', function () {
   gulp.src(paths.tests, {cwd: __dirname})
     .pipe(plugins.plumber(plumberConf))
-    .pipe(mocha({
+    .pipe(plugins.mocha({
       istanbul: !DEBUG,
     }));
 });
