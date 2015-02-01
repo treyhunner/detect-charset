@@ -19,4 +19,8 @@ describe('detectCharset', function () {
     assert.equal(detectCharset(getFixture('utf-8-with-unicode.txt')), 'utf-8');
   });
 
+  it('should return utf-8-bom for files with a BOM', function () {
+    assert.equal(detectCharset(getFixture('utf-8-bom.txt')), 'utf-8-bom');
+  });
+
 });
