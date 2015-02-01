@@ -15,12 +15,43 @@ $ npm install --save detect-charset
 
 ```javascript
 var detectCharset = require('detect-charset');
-detectCharset(); // "awesome"
+var fileBuffer = fs.readFileSync('myfile.txt');
+detectCharset(fileBuffer); // "latin1"
 ```
 
-## API
+## Supported Features
 
-_(Coming soon)_
+### latin1
+
+Any file without a byte order mark or unicode characters will return "latin1".
+
+Valid UTF-8 files without any unicode charaters will return "latin1".
+
+### utf-8
+
+Any file that contains unicode characters but does not have a byte order mark will return UTF-8.
+
+In the future, more advanced character set guessing techniques may be employed, but at the moment all files without a byte order mark are assumed to be UTF-8.
+
+### utf-8-bom
+
+Any file with a UTF-8 byte order mark (`'\xEF\xBB\xBF'`) will return "utf-8-bom".
+
+### utf-16be
+
+Any file with a UTF-16 big-endian byte order mark (`'\xFE\xFF'`) will return "utf-16be".
+
+### utf-16be
+
+Any file with a UTF-16 little-endian byte order mark (`'\xFF\xFE'`) will return "utf-16le".
+
+### utf-32be
+
+Any file with a UTF-32 big-endian byte order mark (`'\x00\x00\xFE\xFF'`) will return "utf-32be".
+
+### utf-32be
+
+Any file with a UTF-32 little-endian byte order mark (`'\x00\x00\xFF\xFE'`) will return "utf-32le".
 
 
 ## Contributing
