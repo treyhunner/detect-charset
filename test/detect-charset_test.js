@@ -31,4 +31,12 @@ describe('detectCharset', function () {
     assert.equal(detectCharset(getFixture('utf-16le.txt')), 'utf-16le');
   });
 
+  it('should return utf-32be for appropriate BOM files', function () {
+    assert.equal(detectCharset(getFixture('utf-32be.txt')), 'utf-32be');
+  });
+
+  it('should return utf-32le for appropriate BOM files', function () {
+    assert.equal(detectCharset(getFixture('utf-32le.txt')), 'utf-32le');
+  });
+
 });
